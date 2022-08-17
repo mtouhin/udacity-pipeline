@@ -4,10 +4,24 @@ version: 2.1
 orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
+  hello: circleci/node:13.8.0
 # Orchestrate or schedule a set of jobs
+jobs:
+  print_hello:
+    steps:
+      - run: echo "hello"
+  print_world:
+    steps:
+      - run: echo "world"
+
+  - print_world
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
       - welcome/run
+    jobs:
+      requires: 
+        - print_hello
+        - print_world
