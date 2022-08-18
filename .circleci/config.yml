@@ -9,26 +9,28 @@ orbs:
 jobs:
   print_hello:
     environment: 
-    CODE: 123
+      CODE: 123
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout 
       - run:
-        name: print hello
-        command: echo "hello"
+          name: print hello
+          command: echo "hello"
   print_world:
     environment:
-    CODE: 123
+      CODE: 123
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout 
       - run:
-        name: print world
-        command: echo "world"
+          name: print world
+          command: echo "world"
 workflows:
-  # Name the workflow "welcome"
-  jobs:
-    - print_hello/run
-    - print_world/run
+  # Name the workflow "jobs"
+  welcome:
+    jobs:
+      - print_hello
+      - print_world:
+          requires: [print_hello]
