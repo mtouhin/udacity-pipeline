@@ -18,6 +18,12 @@ jobs:
     steps:
       - checkout 
       - run: echo "world"
+  test_env:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout 
+      - run: echo $BUIILD_AUTHOR
 workflows:
   # Name the workflow "jobs"
   welcome:
@@ -27,3 +33,4 @@ workflows:
       - print_world:
           requires: 
             - print_hello
+      - test_env
