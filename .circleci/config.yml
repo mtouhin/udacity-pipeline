@@ -8,8 +8,6 @@ orbs:
 
 jobs:
   print_hello:
-    environment: 
-      CODE: 123
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -18,8 +16,6 @@ jobs:
           name: print hello
           command: echo "hello"
   print_world:
-    environment:
-      CODE: 123
     docker:
       - image: circleci/node:13.8.0
     steps:
