@@ -20,8 +20,9 @@ jobs:
       - run: echo "world"
 workflows:
   # Name the workflow "jobs"
-  print_hello_world:
+  welcome:
     jobs:
+      - welcome/run
       - print_hello
       - print_world:
           requires: 
