@@ -13,8 +13,6 @@ jobs:
   print_world:
     steps:
       - run: echo "world"
-
-  - print_world
 workflows:
   # Name the workflow "welcome"
   welcome:
