@@ -21,6 +21,9 @@ jobs:
   test_env:
     docker:
       - image: circleci/node:13.8.0
+        auth:
+          username: mtouhin@yahoo.com
+          password: $DOCKER_PASSWORD
     steps:
       - checkout 
       - run: echo $BUIILD_AUTHOR
