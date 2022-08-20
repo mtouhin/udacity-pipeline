@@ -28,7 +28,7 @@ jobs:
         
 workflows:
   # Name the workflow "jobs"
-  welcome:
+  myJobs:
     jobs:
       - welcome/run
       - save_hello_world
