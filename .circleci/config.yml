@@ -18,13 +18,13 @@ jobs:
           paths:
             - output.txt
   
-  print_output_file:   
+  print_output_file:
     docker:
       - image: cicrcleci/node:13.8.0
-      steps:
-        - attach_workspace:
-            at: /tmp/workspaces
-        - run: cat output.txt
+    steps:
+      - attach_workspace:
+          at: /tmp/workspaces
+      - run: cat output.txt
         
 workflows:
   # Name the workflow "jobs"
