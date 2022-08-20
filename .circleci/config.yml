@@ -13,7 +13,7 @@ jobs:
     steps:
       - run: echo "hello world" > output.txt
       - persist_to_workspace:
-      root: workspace
+          root: workspace
           # Must be relative path from root
           paths:
             - output.txt
@@ -23,8 +23,8 @@ jobs:
       - image: cicrcleci/node:13.8.0
     steps:
       - attach_workspace:
-          at: /tmp/workspaces
-      - run: cat output.txt
+          at: ~/
+      - run: cat ~/output.txt
         
 workflows:
   # Name the workflow "jobs"
