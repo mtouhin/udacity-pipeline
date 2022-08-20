@@ -7,30 +7,31 @@ orbs:
 # Orchestrate or schedule a set of jobs
 
 jobs:
-  print_hello:
+  save_hello_world:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "hello"
-  print_world:
+      - run: echo "hello world" > output.txt
+      - persist_to_workspace:
+      root: workspace
+          # Must be relative path from root
+          paths:
+            - output.txt
+  
+  print_output_file:   
     docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - checkout 
-      - run: echo "world"
-  test_env:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - checkout 
-      - run: echo $BUIILD_AUTHOR
+      - image: cicrcleci/node:13.8.0
+      steps:
+        - attach_workspace:
+            at: /tmp/workspaces
+        - run: cat output.txt
+        
 workflows:
   # Name the workflow "jobs"
   welcome:
     jobs:
       - welcome/run
-      - print_hello
-      - print_world:
-          requires: 
-            - print_hello
-      - test_env
+      - save_hello_world
+      - print_output_files:
+         requires:
+            - save_hello_world
