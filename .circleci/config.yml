@@ -10,6 +10,9 @@ jobs:
   save_hello_world:
     docker:
       - image: circleci/node:13.8.0
+        auth:
+          username: mtouhin
+          password: Blackie1294570!
     steps:
       - run: echo "hello world" > ~/output.txt
       - persist_to_workspace:
@@ -20,6 +23,9 @@ jobs:
   print_output_file:
     docker:
       - image: cicrcleci/node:13.8.0
+        auth:
+          username: mtouhin
+          password: Blackie1294570!
     steps:
       - attach_workspace:
           at: ~/
