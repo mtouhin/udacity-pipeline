@@ -28,10 +28,10 @@ jobs:
         
 workflows:
   # Name the workflow "jobs"
-  myJobs:
+  workflow_name:
     jobs:
       - welcome/run
       - save_hello_world
-      - print_output_files:
-         requires:
+      - print_output_file:
+          requires:
             - save_hello_world
